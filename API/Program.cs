@@ -20,9 +20,8 @@ builder.Services.AddCors(o =>
         if (builder.Environment.IsDevelopment())
             p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
         else
-            p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-        //p.WithOrigins("https://authservice8-fvgjaehwh5f8d9dq.swedencentral-01.azurewebsites.net")
-        // .AllowAnyHeader().AllowAnyMethod();
+            p.WithOrigins("https://authservice8-fvgjaehwh5f8d9dq.swedencentral-01.azurewebsites.net")
+             .AllowAnyHeader().AllowAnyMethod();
     });
 });
 
