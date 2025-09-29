@@ -4,6 +4,10 @@ using Azure.Communication.Email;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
@@ -16,8 +20,9 @@ builder.Services.AddCors(o =>
         if (builder.Environment.IsDevelopment())
             p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
         else
-            p.WithOrigins("https://authservice8-fvgjaehwh5f8d9dq.swedencentral-01.azurewebsites.net")
-             .AllowAnyHeader().AllowAnyMethod();
+            p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+        //p.WithOrigins("https://authservice8-fvgjaehwh5f8d9dq.swedencentral-01.azurewebsites.net")
+        // .AllowAnyHeader().AllowAnyMethod();
     });
 });
 
