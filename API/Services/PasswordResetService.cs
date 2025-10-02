@@ -24,14 +24,14 @@ public class PasswordResetService(EmailClient client, IConfiguration config, ILo
 
             _logger.LogInformation("Sending password reset email to {Email}", req.Email);
 
-            var subject = "Reset your password";
+            var subject = "Återställ ditt lösenord";
             var html = $@"
-                <p>Hello,</p>
-                <p>Click the link below to reset your password:</p>
-                <p><a href=""{req.Url}"">Reset password</a></p>
-                <p>If you didn't request this, you can safely ignore this email.</p>
+                <p>Hej,</p>
+                <p>Klicka på länken nedan för att återställa ditt lösenord:</p>
+                <p><a href=""{req.Url}"">Återställ lösenord</a></p>
+                <p>Om du inte har begärt detta kan du lugnt ignorera detta mejl.</p>
                 <br>
-                <p>Best regards, Core Gym Club Support</p>";
+                <p>Vänliga hälsningar,<br>Core Gym Club</p>";
 
             var message = new EmailMessage(
             _senderAddress,
@@ -64,10 +64,10 @@ public class PasswordResetService(EmailClient client, IConfiguration config, ILo
 
             _logger.LogInformation("Sending password-changed confirmation email to {Email}", email);
 
-            var subject = "Your password was changed";
-            var html = $@" <p>Your password has been successfully changed. If this wasn't you, contact support immediately.</p>
+            var subject = "Ditt lösenord har ändrats";
+            var html = $@" <p>Ditt lösenord har ändrats. Om det inte var du som gjorde ändringen, kontakta support omedelbart.</p>
                 <br>
-                <p>Best regards, Core Gym Club Support</p>";
+                <p>Vänliga hälsningar,<br>Core Gym Club</p>";
 
             var message = new EmailMessage(
                 _senderAddress,
